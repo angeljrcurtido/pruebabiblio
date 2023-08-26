@@ -14,5 +14,5 @@
    # Copia el resto de los archivos del proyecto
    COPY . .
 
-   # Establece el comando de inicio
-   CMD ["npm", "start"]
+ # Establece el comando de inicio
+CMD ["npx", "nodemon", "server.js"]
