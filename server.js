@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 8000;
 // Agregar CORS a la aplicación
 app.use (cors({
   credentials:true,
-  origin:'http://localhost:3000'
+  origin:'*'
 
 }))
 
