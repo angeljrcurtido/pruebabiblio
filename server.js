@@ -515,7 +515,7 @@ app.get('/libros/alquilados/prestados', async (req, res) => {
 
   // Ruta para realizar el respaldo de la base de datos
 app.get('/backup', (req, res) => {
-  const backupCommand = 'mongodump --uri "mongodb+srv://angeljrcurtido:curtidobenitez@cluster0.kdytrz3.mongodb.net/biblioteca?retryWrites=true&w=majority"';
+  const backupCommand = 'mongodump --uri "mongodb+srv://angeljrcurtido:curtidobenitez@cluster0.kdytrz3.mongodb.net/biblioteca"';
 
   exec(backupCommand, (error, stdout, stderr) => {
     if (error) {
