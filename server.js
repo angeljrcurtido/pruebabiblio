@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const cors = require('cors');
+const { exec } = require('child_process');
 
 const app = express();
 const PORT = process.env.PORT || 8000;
@@ -511,6 +512,21 @@ app.get('/libros/alquilados/prestados', async (req, res) => {
       res.status(400).json({ message: error.message });
     }
   });
+
+  // Ruta para realizar el respaldo de la base de datos
+app.get('/backup', (req, res) => {
+  const backupCommand = 'mongodump --uri "mongodb+srv://angeljrcurtido:curtidobenitez@cluster0.kdytrz3.mongodb.net/biblioteca?retryWrites=true&w=majority"';
+
+  exec(backupCommand, (error, stdout, stderr) => {
+    if (error) {
+      console.error(`Error al realizar el respaldo: ${error.message}`);
+      return res.status(500).json({ message: 'Error al realizar el respaldo' });
+    }
+
+    console.log(`Respaldo creado: ${stdout}`);
+    res.status(200).json({ message: 'Respaldo creado exitosamente' });
+  });
+});
   
   // Conectar a la base de datos MongoDB
 mongoose
