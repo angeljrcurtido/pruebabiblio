@@ -528,9 +528,7 @@ app.get('/backup', (req, res) => {
   });
 });
   
-  // Conectar a la base de datos MongoDB
-mongoose
-.connect('mongodb+srv://angeljrcurtido:curtidobenitez@cluster0.kdytrz3.mongodb.net/biblioteca?retryWrites=true&w=majority')
+  // Conectar a la base de datos )// Secret
 .then(() => console.log("Connected to MongoDB Atlas"))
 .catch((error) => console.error(error));
 
